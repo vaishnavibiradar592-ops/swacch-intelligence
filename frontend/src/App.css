@@ -1910,3 +1910,357 @@ button {
   }
 
 }
+/* ================================
+   GLOBAL APP LAYOUT FIX
+   ================================ */
+
+.app {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Fixed left sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* Everything except sidebar */
+.main {
+  margin-left: 280px;
+  width: calc(100% - 280px);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Navbar inside main area */
+.navbar {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* All pages */
+.page {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+/* Prevent content from going underneath sidebar */
+.main > * {
+  box-sizing: border-box;
+}
+/* ================================
+   MAIN APP LAYOUT
+   ================================ */
+
+.app {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main {
+  margin-left: 280px;
+  width: calc(100% - 280px);
+  min-height: 100vh;
+  background: #f6f9f7;
+  box-sizing: border-box;
+}
+
+/* ================================
+   NAVBAR
+   ================================ */
+
+.navbar {
+  height: 86px;
+  width: 100%;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-bottom: 1px solid #e5ebe8;
+  box-sizing: border-box;
+}
+
+.navbar-title h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #10231c;
+}
+
+.navbar-title p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: #7b8984;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.notification-btn {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #e3ebe7;
+  border-radius: 12px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #17382d;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 18px;
+  border-left: 1px solid #e5ebe8;
+}
+
+.admin-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #e8f5ef;
+  color: #087443;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.admin-info strong {
+  font-size: 14px;
+  color: #16251f;
+}
+
+.admin-info span {
+  font-size: 11px;
+  color: #82908b;
+}
+
+/* ================================
+   PAGE
+   ================================ */
+
+.page {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 32px;
+  box-sizing: border-box;
+}
+/* =================================
+   COMMON PAGE LAYOUT
+   Applies to ALL pages
+   ================================= */
+
+.main {
+  margin-left: 280px;
+  width: calc(100% - 280px);
+  min-height: 100vh;
+  background: #f6f9f7;
+  box-sizing: border-box;
+}
+
+/* Every page gets comfortable spacing */
+.page {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 40px 48px;
+  box-sizing: border-box;
+}
+
+/* Give page headings some breathing room */
+.page > h1 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.page > p {
+  margin-bottom: 28px;
+}
+
+/* Panels/cards should not touch the edges */
+.panel,
+.form-card,
+.map-container {
+  box-sizing: border-box;
+}
+
+/* Better spacing between dashboard sections */
+.dashboard-grid {
+  gap: 24px;
+}
+
+.stats-grid {
+  gap: 20px;
+}
+
+.alerts-list {
+  gap: 16px;
+}
+
+/* Space between page sections */
+
+/* ============================================
+   FINAL SWACCH INTELLIGENCE LAYOUT
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Main application */
+.app {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  background: #f5f8f6;
+}
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+
+.app > .sidebar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 280px !important;
+  height: 100vh;
+  z-index: 1000;
+}
+
+/* ============================================
+   MAIN AREA
+   ============================================ */
+
+.app > .main {
+  margin-left: 280px !important;
+  width: calc(100% - 280px) !important;
+  min-height: 100vh;
+  background: #f5f8f6;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+
+.app > .main > .navbar {
+  width: 100%;
+  height: 86px;
+  background: #ffffff;
+}
+
+/* ============================================
+   CONTENT AREA
+   ============================================ */
+
+.content-area {
+  width: 100%;
+  padding: 36px 48px 60px;
+  background: #f5f8f6;
+}
+
+/* ============================================
+   ALL PAGES
+   ============================================ */
+
+.content-area .page {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+/* ============================================
+   PAGE HEADINGS
+   ============================================ */
+
+.content-area .page > h1 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.content-area .page > p {
+  margin-top: 0;
+  margin-bottom: 28px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1000px) {
+  .app > .sidebar {
+    width: 230px !important;
+  }
+
+  .app > .main {
+    margin-left: 230px !important;
+    width: calc(100% - 230px) !important;
+  }
+
+  .content-area {
+    padding: 28px 30px 50px;
+  }
+}
+
+@media (max-width: 700px) {
+  .app > .sidebar {
+    width: 75px !important;
+  }
+
+  .app > .main {
+    margin-left: 75px !important;
+    width: calc(100% - 75px) !important;
+  }
+
+  .content-area {
+    padding: 24px 20px 40px;
+  }
+}
