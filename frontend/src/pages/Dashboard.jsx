@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -16,6 +16,7 @@ import RiskCard from "../components/RiskCard";
 import SectionTitle from "../components/SectionTitle";
 
 import { wards, alerts } from "../data/mockData";
+import { predictGVP } from "../services/api";
 
 ChartJS.register(
   CategoryScale,
@@ -29,10 +30,38 @@ ChartJS.register(
 function Dashboard() {
 
   const [selectedWard, setSelectedWard] = useState(3);
+  const [aiScore, setAiScore] = useState(null);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState("");
 
   const ward = wards.find(
     (item) => item.ward_id === Number(selectedWard)
   );
+    const runAIPrediction = async () => {
+    setAiLoading(true);
+    setAiError("");
+
+    try {
+      const result = await predictGVP({
+        population: ward.population,
+        waste_kg: ward.waste_kg,
+        segregated_kg: ward.segregated_kg,
+        complaints: ward.complaints,
+        collection_delay: ward.collection_delay,
+        previous_gvp: ward.previous_gvp,
+      });
+
+      setAiScore(result.risk_score);
+    } catch (error) {
+      console.error(error);
+      setAiError("AI prediction failed");
+    } finally {
+      setAiLoading(false);
+    }
+  };
+    useEffect(() => {
+    runAIPrediction();
+  }, [selectedWard]);
 
   const barData = {
     labels: wards.map((w) => w.name),
@@ -112,7 +141,7 @@ function Dashboard() {
         <StatCard
           icon="♻"
           title="Total Waste"
-          value="12,450 kg"
+          value={`${ward.waste_kg.toLocaleString()} kg`}
           change="+8.4%"
           subtitle="vs yesterday"
           type="green"
@@ -121,7 +150,8 @@ function Dashboard() {
         <StatCard
           icon="◈"
           title="Segregation"
-          value="68.4%"
+          value={`${Math.round(
+         (ward.segregated_kg / ward.waste_kg) * 100 )}%`}
           change="+4.2%"
           subtitle="this week"
           type="blue"
@@ -139,7 +169,7 @@ function Dashboard() {
         <StatCard
           icon="⚠"
           title="Open Complaints"
-          value="24"
+          value={ward.complaints}
           change="-6"
           subtitle="from yesterday"
           type="orange"
